@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Love for Nizma</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(to bottom, #ffe4ec, #ffd6f0);
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .love-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      cursor: pointer;
+    }
+
+    .heart {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100px;
+      height: 90px;
+      background: red;
+      transform: translate(-50%, -50%) rotate(-45deg);
+      animation: beat 1s infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 90px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -50px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 50px;
+      top: 0;
+    }
+
+    @keyframes beat {
+      0%, 100% {
+        transform: translate(-50%, -50%) rotate(-45deg) scale(1);
+      }
+      50% {
+        transform: translate(-50%, -50%) rotate(-45deg) scale(1.2);
+      }
+    }
+
+    .float-heart {
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      font-size: 2rem;
+      color: pink;
+      animation: floatUp 3s ease-in-out infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(-50%) translateY(-300px);
+        opacity: 0;
+      }
+    }
+
+    .message {
+      margin-top: 30px;
+      font-size: 2rem;
+      color: #d63384;
+      font-weight: bold;
+      display: none;
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="love-container" onclick="showMessage()">
+    <div class="heart"></div>
+    <!-- Hati-hati kecil melayang -->
+    <div class="float-heart" style="animation-delay: 0s;">💖</div>
+    <div class="float-heart" style="left: 30%; animation-delay: 1s;">💗</div>
+    <div class="float-heart" style="left: 70%; animation-delay: 2s;">💘</div>
+  </div>
+
+  <div class="message" id="loveMessage">I love Nizma ❤️</div>
+
+  <script>
+    function showMessage() {
+      const message = document.getElementById('loveMessage');
+      message.style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
